@@ -7,6 +7,7 @@
 //
 
 #import "JTRedDot.h"
+#import <objc/runtime.h>
 
 @implementation JTRedDot
 
@@ -105,3 +106,47 @@
 }
 
 @end
+
+
+@implementation UIView (JTRedDot)
+
+- (void)jt_showRedDot {
+    self.jt_redDot.hidden = NO;
+}
+- (void)jt_hideRedDot {
+    self.jt_redDot.hidden = YES;
+}
+
+#pragma mark - getter && setter
+
+static const char JTRedDotKey = '\0';
+- (void)setJt_redDot:(JTRedDot *)jt_redDot {
+    if (jt_redDot != self.jt_redDot) {
+        [self.jt_redDot removeFromSuperview];
+        [self insertSubview:jt_redDot atIndex:0];
+        
+        [self willChangeValueForKey:@"jt_redDot"];
+        objc_setAssociatedObject(self, &JTRedDotKey, jt_redDot, OBJC_ASSOCIATION_ASSIGN);
+        [self didChangeValueForKey:@"jt_redDot"];
+    }
+}
+
+- (JTRedDot *)jt_redDot {
+    
+    JTRedDot *redDot = objc_getAssociatedObject(self, &JTRedDotKey);
+    if (redDot == nil) {
+        
+        redDot = [JTRedDot new];
+        redDot.hidden = YES;
+        
+        [self addSubview:redDot];
+        
+        [self willChangeValueForKey:@"jt_redDot"];
+        objc_setAssociatedObject(self, &JTRedDotKey, redDot, OBJC_ASSOCIATION_ASSIGN);
+        [self didChangeValueForKey:@"jt_redDot"];
+    }
+    return redDot;
+}
+
+@end
+

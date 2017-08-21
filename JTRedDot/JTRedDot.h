@@ -24,4 +24,17 @@ typedef enum : NSUInteger {
 /** 方向 */
 @property (nonatomic, assign) JTRedDotDirection redDotDirection;
 
+
+@end
+
+
+
+
+@interface UIView (JTRedDot)
+
+@property (nonatomic, strong) JTRedDot *jt_redDot;
+
+- (void)jt_showRedDot;
+- (void)jt_hideRedDot;
+
 @end

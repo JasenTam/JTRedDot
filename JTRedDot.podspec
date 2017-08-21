@@ -17,27 +17,23 @@ Pod::Spec.new do |s|
 
   s.name         = "JTRedDot"
   s.version      = "1.0.0"
-  s.summary      = "A easy way to show red dot on the view.”
+  s.summary      = "A easy way to show red dot on the view."
 
-  # This description is used to generate tags and improve search results.
-  #   * Think: What does it do? Why did you write it? What is the focus?
-  #   * Try to keep it short, snappy and to the point.
-  #   * Write the description between the DESC delimiters below.
-  #   * Finally, don't worry about the indent, CocoaPods strips it!
-  s.description  = A easy way to show red dot on the view:
+  s.description  = <<-DESC
+  A easy way to show red dot on the view:
                    DESC
 
   s.homepage     = "https://github.com/JasenTam/JTRedDot"
 
-  s.license      = ""
+  s.license      = "MIT"
 
-  s.author       = { “JTam” => “48782442@qq.com” }
+  s.author       = { "JTam" => "48782442@qq.com" }
 
-  s.platform     = :ios, “8.0”
+  s.platform     = :ios, "8.0"
 
   s.source       = { :git => "https://github.com/JasenTam/JTRedDot.git", :tag => "#{s.version}" }
 
-  s.source_files  = "JTRedDot", "Classes/**/*.{h,m}"
+  s.source_files  = "JTRedDot", "JTRedDot/**.{h,m}"
   s.exclude_files = "JTRedDot/Exclude"
 
   s.requires_arc = true
